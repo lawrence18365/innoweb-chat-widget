@@ -7,7 +7,12 @@
         script.onload = function() {
             if (typeof initChatWidget === 'function') {
                 initChatWidget();
+            } else {
+                console.error('initChatWidget function not found');
             }
+        };
+        script.onerror = function() {
+            console.error('Failed to load innoweb-chat.js');
         };
         document.body.appendChild(script);
 
