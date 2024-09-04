@@ -1,4 +1,38 @@
-(function() {
+function initChatWidget() {
+    const chatWidgetHTML = `
+        <div class="chat-widget" id="chat-widget">
+            <div class="chat-toggle" id="chat-toggle">
+                <div class="chat-icon">
+                    Chat
+                </div>
+            </div>
+            <div class="chat-content">
+                <div class="chat-header">
+                    <span>InnoWeb AI Assistant</span>
+                    <span class="close-chat" id="close-chat">&times;</span>
+                </div>
+                <div class="chat-messages" id="chat-messages"></div>
+                <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                </div>
+                <div class="chat-suggestions" id="chat-suggestions"></div>
+                <div class="chat-input-container">
+                    <div class="chat-input">
+                        <input type="text" id="user-input" placeholder="Type your message...">
+                        <button id="send-button">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notification" id="notification"></div>
+    `;
+
+    const chatWidgetContainer = document.getElementById('innoweb-chat-widget');
+    chatWidgetContainer.innerHTML = chatWidgetHTML;
+
+    // Your existing JavaScript code here
     const chatWidget = document.getElementById('chat-widget');
     const chatToggle = document.getElementById('chat-toggle');
     const closeChat = document.getElementById('close-chat');
@@ -146,5 +180,11 @@
             addMessage("Hi there! Welcome to InnoWeb Designs. What's the next project you're planning?", false);
             addSuggestions(['Website redesign', 'Mobile app development', 'E-commerce solution', 'Custom software']);
         }, 1000);
-    });
+     }
+  });
+
+// Make the function available globally
+window.initChatWidget = initChatWidget;
+    }
+  });
 })();
