@@ -30,9 +30,13 @@ function initChatWidget() {
     `;
 
     const chatWidgetContainer = document.getElementById('innoweb-chat-widget');
-    chatWidgetContainer.innerHTML = chatWidgetHTML;
+    if (chatWidgetContainer) {
+        chatWidgetContainer.innerHTML = chatWidgetHTML;
+    } else {
+        console.error('Chat widget container not found');
+        return;
+    }
 
-    // Your existing JavaScript code here
     const chatWidget = document.getElementById('chat-widget');
     const chatToggle = document.getElementById('chat-toggle');
     const closeChat = document.getElementById('close-chat');
@@ -52,8 +56,8 @@ function initChatWidget() {
         }
     }
 
-    chatToggle.addEventListener('click', toggleChat);
-    closeChat.addEventListener('click', toggleChat);
+    if (chatToggle) chatToggle.addEventListener('click', toggleChat);
+    if (closeChat) closeChat.addEventListener('click', toggleChat);
 
     function addMessage(message, isUser) {
         const messageElement = document.createElement('div');
@@ -180,11 +184,8 @@ function initChatWidget() {
             addMessage("Hi there! Welcome to InnoWeb Designs. What's the next project you're planning?", false);
             addSuggestions(['Website redesign', 'Mobile app development', 'E-commerce solution', 'Custom software']);
         }, 1000);
-     }
-  });
+    });
+}
 
 // Make the function available globally
 window.initChatWidget = initChatWidget;
-    }
-  });
-})();
